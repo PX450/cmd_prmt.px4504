@@ -204,7 +204,7 @@ async function renderAsciiHeart() {
     await drawProgressBar();
     await delay(500);
     printLine("");
-    await typeWriter("> System Status: 100% In Love with Riya.");
+    await typeWriter("> System Status: 100% In Love with Anuuu.");
 
     await delay(1000);
     startLoveAnimation();
