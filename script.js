@@ -1,5 +1,5 @@
 let inputState = 'BOOTING'; 
-const rootKey = "09122005"; // The Root Key! Edit this date (DDMMYYYY)
+const rootKey = "09102005"; // The Root Key! Edit this date (DDMMYYYY)
 const hiddenInput = document.getElementById('hidden-input');
 const typedInput = document.getElementById('typed-input');
 const output = document.getElementById('output');
