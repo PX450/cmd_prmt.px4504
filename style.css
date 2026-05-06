@@ -1,0 +1,153 @@
+body {
+    background-color: #000;
+    color: #0f0;
+    font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.7);
+}
+
+#terminal {
+    padding: 30px;
+    height: 100%;
+    overflow-y: auto;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 2;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+/* CRT Scanline Effect */
+body::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 10;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+}
+
+.input-line {
+    display: flex;
+    margin-top: 10px;
+}
+
+.cursor {
+    display: inline-block;
+    width: 10px;
+    height: 1.2em;
+    background-color: #0f0;
+    animation: blink 1s step-end infinite;
+    vertical-align: text-bottom;
+    margin-left: 5px;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.hidden-input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.error {
+    color: #ff3333;
+    text-shadow: 0 0 5px rgba(255, 51, 51, 0.7);
+}
+
+.success {
+    color: #33cc33;
+}
+
+.ascii-heart-container {
+    perspective: 1000px;
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+}
+
+.heart-wrapper {
+    display: inline-block;
+    transform-style: preserve-3d;
+    animation: rotateBounce 3s infinite ease-in-out;
+}
+
+@keyframes rotateBounce {
+    0% { transform: rotateY(-25deg) translateY(0) scale(1); }
+    25% { transform: rotateY(0deg) translateY(-15px) scale(1.05); }
+    50% { transform: rotateY(25deg) translateY(0) scale(1); }
+    75% { transform: rotateY(0deg) translateY(-15px) scale(1.05); }
+    100% { transform: rotateY(-25deg) translateY(0) scale(1); }
+}
+
+.heart {
+    color: #ff3366;
+    text-shadow: 
+        0 0 10px rgba(255, 51, 102, 0.8),
+        1px 1px 0px #b30033,
+        2px 2px 0px #800022,
+        3px 3px 0px #4d0014,
+        4px 4px 5px rgba(0,0,0,0.5);
+    font-weight: bold;
+    font-size: 1.2rem;
+    white-space: pre;
+    font-family: monospace;
+    line-height: 1.1;
+}
+
+/* Scrollbar customization for a terminal feel */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #000;
+}
+::-webkit-scrollbar-thumb {
+    background: #0f0;
+}
+
+/* Animation classes */
+.floating-heart {
+    position: absolute;
+    bottom: -10vh;
+    color: #ff3366;
+    font-size: 2rem;
+    animation: floatUp 4s ease-in forwards;
+    pointer-events: none;
+    z-index: 5;
+    text-shadow: 0 0 10px rgba(255, 51, 102, 0.8);
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0) scale(0.5); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translateY(-120vh) scale(1.5) rotate(20deg); opacity: 0; }
+}
+
+.giant-text {
+    font-size: 3rem;
+    color: #ff3366;
+    text-shadow: 0 0 20px rgba(255, 51, 102, 0.9), 0 0 40px rgba(255, 51, 102, 0.6);
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    animation: pulse 2s infinite alternate;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); text-shadow: 0 0 20px rgba(255, 51, 102, 0.9); }
+    100% { transform: scale(1.05); text-shadow: 0 0 40px rgba(255, 51, 102, 1), 0 0 60px rgba(255, 255, 255, 0.5); }
+}
