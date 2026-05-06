@@ -231,7 +231,7 @@ function startLoveAnimation() {
     // Show giant glowing text
     const giantText = document.createElement('div');
     giantText.className = "giant-text";
-    giantText.innerHTML = "I LOVE YOU RIYA ❤️";
+    giantText.innerHTML = "I LOVE YOU ANU ❤️";
     output.appendChild(giantText);
     scrollToBottom();
 
